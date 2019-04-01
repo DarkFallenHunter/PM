@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <form action="" method="post">
+                    {{ wtf.form_field(form.group, **{"onchange":"this.form.submit()"}) }}
+                </form>
+            </div>
+        </div>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+               <tr>
+                   <th class="text-center">ID</th>
+                   <th class="text-center">Имя</th>
+                   <th class="text-center">Фамилия</th>
+                   <th class="text-center">Отчество</th>
+                   <th class="text-center">ID группы</th>
+               </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td class="text-center">{{ student['id'] }}</td>
+                        <td class="text-center">{{ student['name'] }}</td>
+                        <td class="text-center">{{ student['surname'] }}</td>
+                        <td class="text-center">{{ student['secondName'] }}</td>
+                        <td class="text-center">{{ student['studyGroupId'] }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+{% endblock %}
